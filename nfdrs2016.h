@@ -21,8 +21,8 @@
 using namespace std;
 using std::istream;
 using std::ostream;
-using std::setfill;
-using std::setw;
+//using std::setfill;
+//using std::setw;
 using std::string;
 using std::vector;
 
