@@ -22,11 +22,19 @@
 %{
 #include "nfdrs2016.h"
 %}
+%{
+#include "utctime.h"
+%}
 
 %include typemaps.i
 %include "std_vector.i"
 %include "std_string.i"
 %include "std_iostream.i"
+%include "windows.i"
+
+//ignore for now:
+%ignore operator <<;
+%ignore operator >>;
 
 #ifdef SWIGPYTHON
 typedef float FP_STORAGE_TYPE;
@@ -41,6 +49,10 @@ typedef long time_t;
     PyObject *o = PyFloat_FromDouble($1->arrayPtr[i]);
     PyList_SetItem($result,i,o);
   }
+}
+
+%extend DeadFuelMoisture {
+   %rename (Const_assign_DeadFuelMoisture) operator= ( const DeadFuelMoisture & ) ;
 }
 #endif
 
@@ -60,6 +72,7 @@ typedef long time_t;
    delete[] $1->arrayPtr;
    free($1);
 }
+   
 #endif
 
 %include "deadfuelmoisture.h"
@@ -68,4 +81,5 @@ typedef long time_t;
 %include "LFMCalcState.h"
 %include "NFDR2016CalcState.h"
 %include "station.h"
-%include "nfdrs2016.h
+%include "nfdrs2016.h"
+%include "utctime.h"
