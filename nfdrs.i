@@ -29,7 +29,7 @@
 %include typemaps.i
 %include "std_vector.i"
 %include "std_string.i"
-%include "std_iostream.i"
+#%include "std_iostream.i"
 %include "windows.i"
 
 //ignore for now:
